@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# test data and stuff
+audio
+*.wav
+*.srt

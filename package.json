@@ -1,0 +1,16 @@
+{
+  "name": "srt-to-dataset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Suz Hinton",
+  "license": "MIT",
+  "dependencies": {
+    "left-pad": "^1.1.3",
+    "srt-stream": "^1.0.2",
+    "through2": "^2.0.3"
+  }
+}
