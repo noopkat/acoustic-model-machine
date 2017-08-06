@@ -23,11 +23,16 @@ const path = require('path');
  + validate the subtitle file for start + endtime format
 
 */
-const subtitleFile = argv.subtitle;
-const audioFile = argv.source;
-const prefix = argv['output-prefix'] || 'speech';
-const outputDir = argv['output-dir'] || '';
-const scriptOutput = argv['script-output'] || 'transcription.txt';
+
+const defaultArgs = {
+  'output-prefix': 'speech',
+  'output-dir': '',
+  'script-output': 'transcription.txt'
+};
+
+const opts = Object.assign({}, defaultArgs, argv); 
+
+console.log(opts);
 
 function lp(s, l=2) {
   return leftPad(s, l, '0');
@@ -47,7 +52,7 @@ function createAudioSample(sub, audioOutputPath, next) {
   const st  = sub.startTime;
   const et  = sub.endTime;
 
-  const args = ['-i', audioFile, '-ss', formatTime(st), '-to', formatTime(et, true), '-vn', '-ab', '16000', '-ar', '16000', '-ac', '1', audioOutputPath];
+  const args = ['-i', opts.source, '-ss', formatTime(st), '-to', formatTime(et, true), '-vn', '-ab', '16000', '-ar', '16000', '-ac', '1', audioOutputPath];
   console.log(args.join(' '));
   const extract = spawn('ffmpeg', args);
 
@@ -58,15 +63,15 @@ function createAudioSample(sub, audioOutputPath, next) {
 
 function processSubtitle(sub, enc, next) {
   const index = leftPad(sub.id, 6, '0');
-  const audioFilename = `${prefix}${index}.wav`; 
-  const audioOutputPath = path.join(outputDir, audioFilename);
+  const audioFilename = `${opts['output-prefix']}${index}.wav`; 
+  const audioOutputPath = path.join(opts['output-dir'], audioFilename);
   const transcription = createTranscription(sub.body, audioFilename);
   this.push(transcription);
   createAudioSample(sub, audioOutputPath, next); 
 };
 
-fs.createReadStream(subtitleFile)
+fs.createReadStream(opts.subtitle)
   .pipe(srt.read())
   .pipe(through.obj(processSubtitle))
-  .pipe(fs.createWriteStream(scriptOutput));
+  .pipe(fs.createWriteStream(opts['script-output']));
 
