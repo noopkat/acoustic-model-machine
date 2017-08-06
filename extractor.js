@@ -3,29 +3,51 @@ const spawn = require('child_process').spawn;
 const srt = require('srt-stream');
 const through = require('through2');
 const leftPad = require('left-pad');
+const argv = require('minimist')(process.argv.slice(2));
+const path = require('path');
 
-const subtitleFile = 'subtitle.srt';
-const audioFile = 'qatea_audio.wav';
+/*
+ dynamic parts:
 
-fs.createReadStream(subtitleFile)
-  .pipe(srt.read())
-  .pipe(through.obj(function (sub, enc, next) {
-    const audioOutputFile = `speech${leftPad(sub.id, 6, '0')}.wav`;
-    const transcription = createTranscription(sub.body, audioOutputFile);
-    this.push(transcription);
-    createAudioSample(sub, audioOutputFile, next); 
-  }))
-  .pipe(fs.createWriteStream('transcription.txt'))
+ + subtitle file
+ + audio file
+ + location of audio output (utterances)
+ + location and name of the transcription file
 
-function createTranscription(body, audioOutputFile) {
-  return `${audioOutputFile}\t${body.join(' ').toLowerCase().replace(/(,|\.|-)/g, '')}\n\n`;
+ node extractor.js --source=./mediafile.wav --subtitle=subtitle.srt --output-dir=./audio --script-output=./transcription.txt --output-prefix=speech
+ node extractor.js --help 
+
+ features
+
+ + silence at the beginning and end of each utterance
+ + validate the subtitle file for start + endtime format
+
+*/
+const subtitleFile = argv.subtitle;
+const audioFile = argv.source;
+const prefix = argv['output-prefix'] || 'speech';
+const outputDir = argv['output-dir'] || '';
+const scriptOutput = argv['script-output'] || 'transcription.txt';
+
+function lp(s, l=2) {
+  return leftPad(s, l, '0');
 }
 
-function createAudioSample(sub, audioOutputFile, next) {
+function createTranscription(body, audioFilename) {
+  const transcriptionBody = body.join(' ').toLowerCase().replace(/(,|\.|-)/g, '');
+  return `${audioFilename}\t${transcriptionBody}\n\n`;
+}
+
+function formatTime(time, round) {
+  const { hours, minutes, seconds, ms } = time;
+  return fTime = `${lp(hours)}:${lp(minutes)}:${lp(seconds)}.${lp(ms, 3)}`;
+};
+
+function createAudioSample(sub, audioOutputPath, next) {
   const st  = sub.startTime;
   const et  = sub.endTime;
 
-  const args = ['-i', audioFile, '-ss', formatTime(st), '-to', formatTime(et, true), '-ab', '16000', '-ar', '16000', '-ac', '1', `audio/${audioOutputFile}`];
+  const args = ['-i', audioFile, '-ss', formatTime(st), '-to', formatTime(et, true), '-vn', '-ab', '16000', '-ar', '16000', '-ac', '1', audioOutputPath];
   console.log(args.join(' '));
   const extract = spawn('ffmpeg', args);
 
@@ -34,11 +56,17 @@ function createAudioSample(sub, audioOutputFile, next) {
   });
 }
 
-function formatTime(time, round) {
-  const { hours, minutes, seconds, ms } = time;
-  return fTime = `${lp(hours)}:${lp(minutes)}:${lp(seconds)}.${lp(ms, 3)}`;
+function processSubtitle(sub, enc, next) {
+  const index = leftPad(sub.id, 6, '0');
+  const audioFilename = `${prefix}${index}.wav`; 
+  const audioOutputPath = path.join(outputDir, audioFilename);
+  const transcription = createTranscription(sub.body, audioFilename);
+  this.push(transcription);
+  createAudioSample(sub, audioOutputPath, next); 
 };
 
-function lp(s, l=2) {
-  return leftPad(s, l, '0');
-}
+fs.createReadStream(subtitleFile)
+  .pipe(srt.read())
+  .pipe(through.obj(processSubtitle))
+  .pipe(fs.createWriteStream(scriptOutput));
+
