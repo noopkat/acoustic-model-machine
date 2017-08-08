@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "generate Custom Speech Service acoustic model datasets from audio and matching subtitles",
   "bin": {
-    "srt-to-dataset": "./bin/acoustic-model-machine.js"
+    "acoustic-model-machine": "./bin/acoustic-model-machine.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
