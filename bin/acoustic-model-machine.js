@@ -9,7 +9,7 @@ const generator = require('../lib/generator');
 
 /*
  example use:
- ./bin/acoustic-model-machine --source=./mediafile.wav --subtitle=subtitle.srt --output-dir=./audio --script-output=./transcription.txt --output-prefix=speech
+ ./bin/acoustic-model-machine --source=./mediafile.wav --subtitle=subtitle.srt --output-dir=./dataset --script-output=./transcription.txt --output-prefix=speech
  ./bin/acoustic-model-machine extractor.js --help 
 */
 
