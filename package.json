@@ -15,6 +15,6 @@
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "progress": "^2.0.0",
-    "srt-to-obj": "noopkat/srt-to-obj#fix-index-trim"
+    "srt-to-obj": "0.0.3"
   }
 }
