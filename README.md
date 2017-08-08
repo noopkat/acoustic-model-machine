@@ -21,7 +21,7 @@ npm install -g acoustic-model-machine
 ## Usage
 
 ```bash
-acoustic-model-machine --source=/path/to/audio.wav --subtitle=/path/to/subtitle.srt --output-dir=/path/to/mydatasetdir
+acoustic-model-machine --source=/path/to/audio.wav --subtitle=/path/to/subtitle.srt --output-dir=mydatasetdir
 ```
 
 ### Options
