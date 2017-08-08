@@ -9,8 +9,8 @@ const generator = require('../lib/generator');
 
 /*
  example use:
- node extractor.js --source=./mediafile.wav --subtitle=subtitle.srt --output-dir=./audio --script-output=./transcription.txt --output-prefix=speech
- node extractor.js --help 
+ ./bin/acoustic-model-machine --source=./mediafile.wav --subtitle=subtitle.srt --output-dir=./audio --script-output=./transcription.txt --output-prefix=speech
+ ./bin/acoustic-model-machine extractor.js --help 
 */
 
 // parse args
@@ -42,6 +42,4 @@ util.findInvalidOptions(opts, (error, list) => {
   // parse subtitle file and generate transcription / audio files
   generator.generateDataset(opts);
 });
-
-
 
