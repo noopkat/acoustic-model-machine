@@ -14,8 +14,6 @@
     "left-pad": "^1.1.3",
     "minimist": "^1.2.0",
     "progress": "^2.0.0",
-    "srt-stream": "^1.0.2",
-    "srt-to-obj": "noopkat/srt-to-obj#fix-index-trim",
-    "through2": "^2.0.3"
+    "srt-to-obj": "noopkat/srt-to-obj#fix-index-trim"
   }
 }

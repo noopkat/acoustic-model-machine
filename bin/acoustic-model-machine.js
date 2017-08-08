@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
 const srtToObj = require('srt-to-obj');
-const through = require('through2');
 const eachSeries = require('async/eachSeries');
 const colors = require('colors/safe');
 const ProgressBar = require('progress');
