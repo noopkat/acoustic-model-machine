@@ -52,7 +52,7 @@ mydatasetdir/
 └── transcription.txt
 ```
 
-### Importing the acoustic adaptation dataset into Custom Speech Services
+### Importing the acoustic adaptation dataset into Custom Speech Service
 
 1. Compress all audio files in the dataset into a flat zip file.
 2. Follow the [official documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-create-acoustic-model) to import.
