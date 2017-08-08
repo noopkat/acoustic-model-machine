@@ -1,6 +1,6 @@
 {
   "name": "acoustic-model-machine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generate Custom Speech Service acoustic model datasets from audio and matching subtitles",
   "bin": {
     "acoustic-model-machine": "./bin/acoustic-model-machine.js"
