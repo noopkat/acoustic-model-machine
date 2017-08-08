@@ -26,11 +26,11 @@ acoustic-model-machine --source=/path/to/audio.wav --subtitle=/path/to/subtitle.
 
 ### Options
 
-`--source` _required_ - the path to the source file containing the speech you want to extract.
-`--subtitle` _required_ - the path to the subtitle file that matches the source audio file. Requires .srt format.
-`--output-dir` _optional_ - the path to where you'd like the dataset saved to. Default is the current working directory.
-`--output-prefix` _optional_ - a custom prefix for the audio extraction files. Default is `speech`. See below section for output example.
-`--verbose` _optional_ - see more verbose logging output when generating a dataset.
++ `--source` _required_ - the path to the source file containing the speech you want to extract.
++ `--subtitle` _required_ - the path to the subtitle file that matches the source audio file. Requires .srt format.
++ `--output-dir` _optional_ - the path to where you'd like the dataset saved to. Default is the current working directory.
++ `--output-prefix` _optional_ - a custom prefix for the audio extraction files. Default is `speech`. See below section for output example.
++ `--verbose` _optional_ - see more verbose logging output when generating a dataset.
 
 ### Output
 
