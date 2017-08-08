@@ -1,8 +1,10 @@
 {
-  "name": "srt-to-dataset",
+  "name": "acoustic-model-machine",
   "version": "1.0.0",
   "description": "generate Custom Speech Service acoustic model datasets from audio and matching subtitles",
-  "bin": "./bin/acoustic-model-machine.js",
+  "bin": {
+    "srt-to-dataset": "./bin/acoustic-model-machine.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +18,26 @@
     "mkdirp": "^0.5.1",
     "progress": "^2.0.0",
     "srt-to-obj": "0.0.3"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noopkat/acoustic-model-machine.git"
+  },
+  "keywords": [
+    "custom",
+    "speech",
+    "service",
+    "microsoft",
+    "acoustic",
+    "adaptation"
+  ],
+  "bugs": {
+    "url": "https://github.com/noopkat/acoustic-model-machine/issues"
+  },
+  "homepage": "https://github.com/noopkat/acoustic-model-machine#readme"
 }
