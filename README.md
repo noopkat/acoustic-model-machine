@@ -6,6 +6,8 @@ It does so by using a video / audio file with matching subtitles to extract shor
 
 My favourite captioning service to request subtitle files from is [Rev](http://rev.com); I highly recommend their amazing people to caption your content!
 
+![gif of command line tool working](http://i.imgur.com/CZWEkhB.gif)
+
 ## Installation
 
 Firstly, install [NodeJS](https://nodejs.org) on your operating system.  
@@ -23,6 +25,7 @@ npm install -g acoustic-model-machine
 ```bash
 acoustic-model-machine --source=/path/to/audio.wav --subtitle=/path/to/subtitle.srt --output-dir=mydatasetdir
 ```
+
 
 ### Options
 
