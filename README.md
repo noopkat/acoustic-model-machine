@@ -8,7 +8,7 @@ My favourite captioning service to request subtitle files from is [Rev](http://r
 
 ## Installation
 
-Firstly, install [NodeJS](https://nodejs.org) on your operating system.
+Firstly, install [NodeJS](https://nodejs.org) on your operating system.  
 You'll also need to have [ffmpeg](http://ffmpeg.org/download.html) installed. Windows can be tricky in particular; [this guide is a good one](http://www.wikihow.com/Install-FFmpeg-on-Windows).
 
 Then, in your favourite terminal application, type the following:
