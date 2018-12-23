@@ -4,7 +4,7 @@ This package can help you put together a dataset for training a custom acoustic 
 
 It does so by using a video / audio file with matching subtitles to extract short passages of speech. These passages are saved to disk in the correct audio format needed. It'll then generate a transcription text file in the exact format required by Custom Speech Service. See the [official Custom Speech Service documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-create-acoustic-model) for more details on acoustic adaptation model datasets.
 
-My favourite captioning service to request subtitle files from is [Rev](http://rev.com); I highly recommend their amazing people to caption your content!
+My favourite captioning service to request subtitle files from is [Rev](https://revpartners.tapfiliate.com/programs/influencers-5/signup/?via=312676); I highly recommend their amazing people to caption your content!
 
 ![gif of command line tool working](http://i.imgur.com/CZWEkhB.gif)
 
