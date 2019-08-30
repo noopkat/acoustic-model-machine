@@ -6,7 +6,7 @@
     "acoustic-model-machine": "./bin/acoustic-model-machine.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape test/*.js test/*/*.js"
   },
   "author": "Suz Hinton",
   "license": "MIT",
@@ -23,7 +23,10 @@
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sinon": "^7.3.2",
+    "tape": "^4.11.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/noopkat/acoustic-model-machine.git"
